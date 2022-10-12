@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
     var retrofit= Retrofit.Builder()
-        .baseUrl("http://127.0.0.1:8000")
+        .baseUrl("https://7f90-197-232-143-191.eu.ngrok.io")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

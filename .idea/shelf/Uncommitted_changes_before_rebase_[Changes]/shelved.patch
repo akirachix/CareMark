@@ -1,0 +1,34 @@
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:tools=\"http://schemas.android.com/tools\" >\n    <uses-permission android:name=\"android.permission.INTERNET\"></uses-permission>\n\n    <application\n        android:allowBackup=\"true\"\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\n        android:fullBackupContent=\"@xml/backup_rules\"\n        android:icon=\"@mipmap/ic_launcher\"\n        android:label=\"@string/app_name\"\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\n        android:supportsRtl=\"true\"\n        android:theme=\"@style/Theme.CareMark\"\n        tools:targetApi=\"31\" >\n        <activity\n            android:name=\".ui.HomeActivity\"\n            android:exported=\"false\" >\n            <meta-data\n                android:name=\"android.app.lib_name\"\n                android:value=\"\" />\n        </activity>\n        <activity\n            android:name=\".ui.SignupActivity\"\n            android:exported=\"false\" >\n            <meta-data\n                android:name=\"android.app.lib_name\"\n                android:value=\"\" />\n        </activity>\n        <activity\n            android:name=\".ui.LoginActivity\"\n            android:exported=\"false\" >\n            <meta-data\n                android:name=\"android.app.lib_name\"\n                android:value=\"\" />\n        </activity>\n        <activity\n            android:name=\".ui.OnboardingActivity\"\n            android:exported=\"false\" />\n        <activity\n            android:name=\".ui.SplashActivity\"\n            android:exported=\"true\"\n            android:theme=\"@style/SplashTheme\" >\n            <intent-filter>\n                <action android:name=\"android.intent.action.MAIN\" />\n\n                <category android:name=\"android.intent.category.LAUNCHER\" />\n            </intent-filter>\n        </activity>\n    </application>\n\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision e8fdc18c4298a5d8780615d7d35b993adf394dba)
++++ b/app/src/main/AndroidManifest.xml	(date 1665565179840)
+@@ -1,7 +1,8 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools" >
+-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
++
++    <uses-permission android:name="android.permission.INTERNET" />
+ 
+     <application
+         android:allowBackup="true"
+@@ -13,6 +14,13 @@
+         android:supportsRtl="true"
+         android:theme="@style/Theme.CareMark"
+         tools:targetApi="31" >
++        <activity
++            android:name=".MedicationSetup"
++            android:exported="false" >
++            <meta-data
++                android:name="android.app.lib_name"
++                android:value="" />
++        </activity>
+         <activity
+             android:name=".ui.HomeActivity"
+             android:exported="false" >
