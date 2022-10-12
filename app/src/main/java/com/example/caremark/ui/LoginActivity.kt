@@ -45,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
         userViewModel.loginResponseLivedata.observe(this, Observer {loginResponse->
             saveLoginDetails(loginResponse!!)
             Toast.makeText(baseContext, loginResponse?.message, Toast.LENGTH_LONG).show()
-            startActivity(Intent(baseContext, HomeActivity::class.java))
+            startActivity(Intent(baseContext, MedicationSetupActivity::class.java))
             finish()
         })
         userViewModel.loginErrorliveData.observe(this, Observer{ error->
