@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">CareMark</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="password">Password</string>
+    <string name="email_required">Email is required</string>
+</resources>
