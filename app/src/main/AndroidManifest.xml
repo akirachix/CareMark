@@ -15,7 +15,7 @@
         android:theme="@style/Theme.CareMark"
         tools:targetApi="31">
         <activity
-            android:name=".MedicationSetup"
+            android:name=".ui.MedicationSetupActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

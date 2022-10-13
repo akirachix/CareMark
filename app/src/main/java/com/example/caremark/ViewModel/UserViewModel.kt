@@ -14,11 +14,11 @@ import kotlinx.coroutines.launch
 class UserViewModel:ViewModel() {
     val userRepository = UserRepository()
     val loginResponseLivedata = MutableLiveData<LoginResponse>()
-    val loginErrorliveData = MutableLiveData<String?>()
+    val loginErrorLiveData = MutableLiveData<String?>()
     var registerResponseLiveData=MutableLiveData<RegisterResponse>()
     val registerErrorLiveData=MutableLiveData<String?>()
 //    var profileResponseLiveData=MutableLiveData<ProfileResponse>()
-    val profileErrorLiveData=MutableLiveData<String?>()
+//    val profileErrorLiveData=MutableLiveData<String?>()
 
     fun loginUser(loginRequest: LoginRequest){
         viewModelScope.launch {
@@ -28,8 +28,8 @@ class UserViewModel:ViewModel() {
             }
             else{
                 val error=response.errorBody()?.string()
-                loginErrorliveData.postValue(error)
-                loginErrorliveData.postValue(response.errorBody()?.string())
+                loginErrorLiveData.postValue(error)
+                loginErrorLiveData.postValue(response.errorBody()?.string())
             }
         }
     }

@@ -16,7 +16,7 @@
         android:id="@+id/tvhead"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="Daily Reminder"
         android:textColor="@color/black"
@@ -28,15 +28,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="22dp"
         android:fontFamily="sans-serif"
         android:gravity="center"
         android:text="We will always remind your medication. It is now our responsibility to protect our health"
         android:textColor="@color/lightgrey"
         android:textSize="15sp"
         android:textStyle="bold" />
-
 
 
 </LinearLayout>

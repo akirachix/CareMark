@@ -5,13 +5,10 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Patterns
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
-import com.example.caremark.R
 import com.example.caremark.ViewModel.UserViewModel
-import com.example.caremark.databinding.ActivityLoginBinding
 import com.example.caremark.databinding.ActivitySignupBinding
 import com.example.caremark.models.RegisterRequest
 
@@ -95,7 +92,7 @@ class SignupActivity : AppCompatActivity() {
 
 
         if (!error) {
-            val registerRequest = RegisterRequest(firstName,lastName,email,password)
+            val registerRequest = RegisterRequest(firstName,lastName,email,password,confirmPassword)
             userViewModel.registerUser(registerRequest)
             startActivity(Intent(this,LoginActivity::class.java))
         }
@@ -132,10 +129,10 @@ class SignupActivity : AppCompatActivity() {
 
 
 
-    companion object{
-        fun getIntent(context: Context):Intent{
-            return  Intent(context, LoginActivity::class.java)
-        }
-
-    }
+//    companion object{
+//        fun getIntent(context: Context):Intent{
+//            return  Intent(context, LoginActivity::class.java)
+//        }
+//
+//    }
 }
