@@ -4,7 +4,7 @@ class Constants {
     companion object{
         val prefsFile = "CAREMARK_PREFS"
         val  accessToken = "ACCESS_TOKEN"
-        val useId = "USER_ID"
+        val userId = "USER_ID"
         val profileId = "PROFILE_ID"
         val EMPTY_STRING = " "
     }

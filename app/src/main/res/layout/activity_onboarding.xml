@@ -40,6 +40,7 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="623dp" />
 
+
     <TextView
         android:id="@+id/tvSkip"
         android:layout_width="wrap_content"
@@ -49,7 +50,7 @@
         android:fontFamily="sans-serif-medium"
         android:text="Skip"
         android:textColor="@color/black"
-        android:textSize="14sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

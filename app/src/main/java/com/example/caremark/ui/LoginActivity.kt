@@ -30,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btnLogin.setOnClickListener{
             validateForm()
-            finish()
+//            finish()
         }
 
         binding.tvSignup.setOnClickListener {
@@ -48,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(baseContext, MedicationSetupActivity::class.java))
             finish()
         })
-        userViewModel.loginErrorliveData.observe(this, Observer{ error->
+        userViewModel.loginErrorLiveData.observe(this, Observer{ error->
             Toast.makeText(baseContext, error,Toast.LENGTH_LONG).show()
         })
     }
@@ -80,7 +80,7 @@ class LoginActivity : AppCompatActivity() {
         val editor = sharedPrefs.edit()
         val token = "Bearer ${loginResponse.accessToken}"
         editor.putString(Constants.accessToken, loginResponse.accessToken)
-        editor.putString(Constants.useId, loginResponse.userId)
+        editor.putString(Constants.userId, loginResponse.userId)
         editor.putString(Constants.profileId, loginResponse.profileId)
         editor.putString("ACCESS_TOKEN", loginResponse.accessToken)
         editor.putString("USER_ID", loginResponse.accessToken)
