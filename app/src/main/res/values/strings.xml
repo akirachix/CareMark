@@ -3,4 +3,16 @@
     <string name="enter_email">Enter Email</string>
     <string name="password">Password</string>
     <string name="email_required">Email is required</string>
+    <string name="name">Name</string>
+    <string name="medication_details">MEDICATION DETAILS</string>
+    <string name="medication_name">Medication name</string>
+    <string name="doses">Doses</string>
+    <string name="time">Time</string>
+    <string name="no_of_times">No of times</string>
+    <string name="set_reminder">SET REMINDER</string>
+    <string name="start_date">Start date</string>
+    <string name="choose_a_date">Choose a date</string>
+    <string name="end_date">End date</string>
+    <string name="appointment_day">Appointment day</string>
+    <string name="save">SAVE</string>
 </resources>

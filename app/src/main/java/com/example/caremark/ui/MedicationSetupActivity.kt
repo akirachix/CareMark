@@ -2,6 +2,7 @@ package com.example.caremark.ui
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,12 +13,14 @@ import android.widget.ImageView
 import android.widget.TimePicker
 import androidx.activity.viewModels
 import com.example.caremark.R
+import com.example.caremark.ViewModel.MedicationViewModel
 import com.example.caremark.ViewModel.UserViewModel
 import com.example.caremark.databinding.ActivityHomeBinding.inflate
 import com.example.caremark.databinding.ActivityLoginBinding.inflate
 import com.example.caremark.databinding.ActivityMedicationSetupBinding
 import com.example.caremark.databinding.ActivityOnboardingBinding.inflate
 import com.example.caremark.databinding.ActivitySignupBinding.inflate
+import com.example.caremark.models.Medication
 
 
 import java.util.*
@@ -26,6 +29,8 @@ class MedicationSetupActivity : AppCompatActivity(){
     var hourOfDay=0
     var minute=0
     lateinit var binding:ActivityMedicationSetupBinding
+    val medicationViewModel:MedicationViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityMedicationSetupBinding.inflate(layoutInflater)
@@ -35,13 +40,12 @@ class MedicationSetupActivity : AppCompatActivity(){
 
     }
 
-
     fun getDate(){
         val c = Calendar.getInstance()
 
-       val year = c.get(Calendar.YEAR)
-         val month = c.get(Calendar.MONTH)
-         val day = c.get(Calendar.DAY_OF_MONTH)
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
 
         binding.imgStartDate.setOnClickListener{
             val startDate = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
@@ -66,7 +70,6 @@ class MedicationSetupActivity : AppCompatActivity(){
 
     }
 
-
     fun getTime(){
         binding.imgTime.setOnClickListener {
             val curr=Calendar.getInstance()
@@ -79,17 +82,67 @@ class MedicationSetupActivity : AppCompatActivity(){
         }
 
     }
+    override fun onResume() {
+        super.onResume()
+        binding.btnSaveMedicationDetails.setOnClickListener { validateAddcontact() }
+    }
+    fun validateAddcontact(){
+        var error = false
+        var medicationName=binding.editTextTextPersonName.text.toString()
+        var doses=binding.etDoses.text.toString()
+        var time=binding.etTime.text.toString()
+        var noOfTimes=binding.etNoOfTimes.text.toString()
+        var startDate = binding.etStartDate.text.toString()
+        var endDate = binding.etEndDate.text.toString()
+        var appointmentDate = binding.etAppointment.text.toString()
 
+        if (medicationName.isBlank()){
+            binding.editTextTextPersonName.error="Enter medication name"
+            error=true
+        }
+        if (doses.isBlank()){
+            binding.etDoses.error="Enter doses"
+            error=true
+        }
+        if (time.isBlank()){
+            binding.etTime.error="Medication time required"
+            error=true
+        }
+        if (noOfTimes.isBlank()){
+            binding.etNoOfTimes.error="Enter the number of taking pills in a day"
+            error=true
+        }
+        if (startDate.isBlank()){
+            binding.etStartDate.error="Enter the treatment starting date"
+            error=true
+        }
+        if (endDate.isBlank()){
+            binding.etEndDate.error="Enter the reminder end day"
+            error=true
+        }
+        if (appointmentDate.isBlank()){
+            binding.etAppointment.error="Enter the appointment date"
+            error=true
+        }
 
+        if(!error){
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
 
-
-
-
-
-
-
+        val medication= Medication(medicationId = 1, medicationName = medicationName,doses=0,time=time,noOfTimes=1,startDate=startDate,endDate=endDate,appointmentDate=appointmentDate)
+        medicationViewModel.saveMedication(medication)
+    }
 }
 
-class ActivityMedicationSetupBinding {
 
-}
+
+
+
+
+
+
+
+
+
+
+
