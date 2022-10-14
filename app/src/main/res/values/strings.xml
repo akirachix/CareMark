@@ -15,4 +15,9 @@
     <string name="end_date">End date</string>
     <string name="appointment_day">Appointment day</string>
     <string name="save">SAVE</string>
+    <string name="home">Home</string>
+    <string name="medication">Medication</string>
+    <string name="track">Track</string>
+    <string name="points">Points</string>
+    <string name="this_weeks_progress">This Weeks Progress</string>
 </resources>

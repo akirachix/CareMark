@@ -3,24 +3,14 @@ package com.example.caremark.ui
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View.inflate
-import android.widget.DatePicker
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TimePicker
 import androidx.activity.viewModels
-import com.example.caremark.R
 import com.example.caremark.ViewModel.MedicationViewModel
-import com.example.caremark.ViewModel.UserViewModel
-import com.example.caremark.databinding.ActivityHomeBinding.inflate
-import com.example.caremark.databinding.ActivityLoginBinding.inflate
 import com.example.caremark.databinding.ActivityMedicationSetupBinding
-import com.example.caremark.databinding.ActivityOnboardingBinding.inflate
-import com.example.caremark.databinding.ActivitySignupBinding.inflate
+import com.example.caremark.databinding.FragmentHomeBinding
 import com.example.caremark.models.Medication
+
 
 
 import java.util.*
@@ -126,7 +116,8 @@ class MedicationSetupActivity : AppCompatActivity(){
         }
 
         if(!error){
-            startActivity(Intent(this,HomeActivity::class.java))
+                startActivity(Intent(this, HomeActivity::class.java))
+
         }
 
         val medication= Medication(medicationId = 1, medicationName = medicationName,doses=0,time=time,noOfTimes=1,startDate=startDate,endDate=endDate,appointmentDate=appointmentDate)
