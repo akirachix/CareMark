@@ -17,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
         val handler=Handler(Looper.getMainLooper())
         handler.postDelayed({
-            val intent=Intent(this, MedicationSetupActivity::class.java)
+            val intent=Intent(this, OnboardingActivity::class.java)
             startActivity(intent)
             finish()
         },3000)
