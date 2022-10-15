@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import com.example.caremark.HomeFragment
 import com.example.caremark.ViewModel.MedicationViewModel
 import com.example.caremark.databinding.ActivityMedicationSetupBinding
 import com.example.caremark.databinding.FragmentHomeBinding
@@ -74,7 +75,11 @@ class MedicationSetupActivity : AppCompatActivity(){
     }
     override fun onResume() {
         super.onResume()
-        binding.btnSaveMedicationDetails.setOnClickListener { validateAddcontact() }
+        binding.btnSaveMedicationDetails.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+//        validateAddcontact()
     }
     fun validateAddcontact(){
         var error = false
