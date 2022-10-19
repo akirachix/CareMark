@@ -6,7 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.example.caremark.HomeFragment
+import com.example.caremark.ui.HomeFragment
 import com.example.caremark.ViewModel.MedicationViewModel
 import com.example.caremark.databinding.ActivityMedicationSetupBinding
 import com.example.caremark.databinding.FragmentHomeBinding
