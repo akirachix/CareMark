@@ -21,5 +21,12 @@ import com.example.caremark.models.Medication
  * Use the [MedsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeFragment: Fragment (
-    R.layout.fragment_home)
+class HomeFragment: Fragment (){
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_home, container, false)
+    }
+}
