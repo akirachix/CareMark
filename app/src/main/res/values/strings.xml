@@ -22,4 +22,7 @@
     <string name="this_weeks_progress">This Weeks Progress</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="take_picture" />
+    <string name="take_picture_description" />
+    <string name="ok_button_title" />
 </resources>
