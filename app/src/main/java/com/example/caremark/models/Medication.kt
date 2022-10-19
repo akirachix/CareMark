@@ -3,6 +3,8 @@ package com.example.caremark.models
 import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.sql.Date
+import java.sql.Time
 
 @Entity(tableName = "Medications")
 data class Medication(
