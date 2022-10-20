@@ -76,10 +76,11 @@ class MedicationSetupActivity : AppCompatActivity(){
     override fun onResume() {
         super.onResume()
         binding.btnSaveMedicationDetails.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+            validateAddcontact()
+//            val intent = Intent(this, HomeActivity::class.java)
+//            startActivity(intent)
         }
-//        validateAddcontact()
+
     }
     fun validateAddcontact(){
         var error = false

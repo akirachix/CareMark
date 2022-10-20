@@ -8,31 +8,35 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.caremark.R
 import com.example.caremark.models.Medication
 
-class MedicationAdapter( var medsList:List<Medication>):
-    RecyclerView.Adapter<MedicationAdapter.MedicationViewHolder>() {
+class HomeMedicationAdapter( var medsList:List<Medication>):
+    RecyclerView.Adapter<HomeMedicationAdapter.MedicationViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MedicationViewHolder {
-        val itemView=LayoutInflater.from(parent.context).inflate(R.layout.list_meds_item, parent,false)
+        val itemView=
+            LayoutInflater.from(parent.context).inflate(R.layout.list_meds_item, parent,false)
         return MedicationViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: MedicationViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: HomeMedicationAdapter.MedicationViewHolder, position: Int) {
         val currentItem = medsList[position]
         holder.medicationName.text=currentItem.medicationName
         holder.doses.text= currentItem.doses.toString()
         holder.time.text=currentItem.time
     }
 
+
+
     override fun getItemCount(): Int {
         return medsList.size
     }
 
-    class MedicationViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
-        val medicationName:TextView=itemView.findViewById(R.id.tvName)
-        val doses:TextView=itemView.findViewById(R.id.tvDose)
-        val time:TextView=itemView.findViewById(R.id.tvHour)
+    class MedicationViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        val medicationName: TextView =itemView.findViewById(R.id.tvName)
+        val doses: TextView =itemView.findViewById(R.id.tvDose)
+        val time: TextView =itemView.findViewById(R.id.tvHour)
     }
+
 
 
 }

@@ -18,7 +18,14 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat.checkSelfPermission
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.caremark.R
+import com.example.caremark.ViewModel.MedicationViewModel
+import com.example.caremark.databinding.FragmentHomeBinding
+import com.example.caremark.databinding.FragmentMedicationBinding
+import com.example.caremark.models.Medication
 
 
 class HomeFragment : Fragment() {
@@ -26,13 +33,17 @@ class HomeFragment : Fragment() {
     private val IMAGE_CAPTURE_CODE = 1001
     private var imageUri: Uri? = null
     private var imageView: ImageView? = null
+    lateinit var binding: FragmentHomeBinding
+    val medsViewModel: MedicationViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding= FragmentHomeBinding.inflate(inflater,container,false)
+        medsViewModel.getAllMedication()
+        return binding.root
     }
 
     private fun requestCameraPermission(): Boolean {
@@ -114,9 +125,10 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        imageView = view.findViewById(R.id.imgPicture)
+//        imageView = view.findViewById(R.id.imgPicture)
+        imageView=binding.imgPicture
 
-        view.findViewById<Button>(R.id.btnVerify).setOnClickListener {
+        binding.btnVerify.setOnClickListener {
             // Request permission
             val permissionGranted = requestCameraPermission()
             if (permissionGranted) {
@@ -124,6 +136,24 @@ class HomeFragment : Fragment() {
                 openCameraInterface()
             }
         }
+
+        medsViewModel.MedicationsLiveData.observe(viewLifecycleOwner, Observer { meds ->
+            displayMeds(meds)
+        })
+
+
+
+
+
+}
+    fun displayMeds(medications: List<Medication>){
+
+//        var medsAdapter=HomeMedicationAdapter(medications)
+//        binding.rvMeds.layoutManager= LinearLayoutManager(context)
+//        binding.rvMeds.x=medsAdapter
+
+//        Still needs some work
+
     }
 }
 
