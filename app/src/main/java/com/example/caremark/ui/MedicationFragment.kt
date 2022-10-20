@@ -5,53 +5,47 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caremark.R
+import com.example.caremark.ViewModel.MedicationViewModel
+import com.example.caremark.databinding.FragmentMedicationBinding
 import com.example.caremark.models.Medication
+class MedicationFragment: Fragment (){
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+//    lateinit var adapter: MedicationAdapter
+//    private lateinit var recyclerView: RecyclerView
+//    private lateinit var medsArrayList: List<Medication>
+    lateinit var binding: FragmentMedicationBinding
+    val medsViewModel: MedicationViewModel by activityViewModels()
 
 
-
-
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MedsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class MedicationFragment: Fragment (
-    R.layout.fragment_medication){
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    private lateinit var adapter: MedicationAdapter
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var medsArrayList: ArrayList<Medication>
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_meds, container, false)
+        binding= FragmentMedicationBinding.inflate(inflater,container,false)
+        medsViewModel.getAllMedication()
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        medsViewModel.MedicationsLiveData.observe(viewLifecycleOwner, Observer { meds->
+            displayMeds(meds)
 
+        })
+
+    }
+
+    fun displayMeds(medications: List<Medication>){
+        var medsAdapter=MedicationAdapter(medications)
+        binding.rvMeds.layoutManager= LinearLayoutManager(context)
+        binding.rvMeds.adapter=medsAdapter
     }
 }
 

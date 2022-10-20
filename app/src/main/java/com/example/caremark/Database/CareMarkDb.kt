@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.caremark.models.Medication
 
-@Database(entities = arrayOf(Medication::class), version = 2)
+@Database(entities = arrayOf(Medication::class), version = 3)
 abstract class CareMarkDb : RoomDatabase() {
     abstract fun MedicationDAO(): MedicationDAO
 
