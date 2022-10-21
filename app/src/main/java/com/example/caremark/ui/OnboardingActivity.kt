@@ -62,11 +62,12 @@ class OnboardingActivity : AppCompatActivity() {
     private fun setClickListeners() = with(binding) {
 
       tvSkip.setOnClickListener {
-         if (onboardingViewPager.currentItem + 1 < adapter.itemCount) {
-              onboardingViewPager.currentItem += 1
-          } else {
-               navigateToLogin()
-          }
+//         if (onboardingViewPager.currentItem + 1 < adapter.itemCount) {
+//              onboardingViewPager.currentItem += 1
+//          } else {
+//          }
+
+          navigateToLogin()
       }
     }
 
