@@ -8,6 +8,7 @@ import android.os.Looper
 import com.example.caremark.R
 import com.example.caremark.databinding.ActivityMedicationSetupBinding
 import com.example.caremark.databinding.ActivitySplashBinding
+import com.example.caremark.utils.Constants.Companion.accessToken
 
 class SplashActivity : AppCompatActivity() {
     lateinit var binding: ActivitySplashBinding
@@ -17,8 +18,12 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
         val handler=Handler(Looper.getMainLooper())
         handler.postDelayed({
-            val intent=Intent(this, OnboardingActivity::class.java)
-            startActivity(intent)
+            if (accessToken!!.isNotBlank()) {
+                startActivity(Intent(this, HomeActivity::class.java))
+            }
+            else {
+                startActivity(Intent(this, LoginActivity::class.java))
+            }
             finish()
         },3000)
 

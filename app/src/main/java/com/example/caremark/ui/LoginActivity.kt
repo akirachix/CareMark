@@ -28,10 +28,11 @@ class LoginActivity : AppCompatActivity() {
 
         sharedPrefs=getSharedPreferences("CAREMARK_PREFS", MODE_PRIVATE)
 
+
         binding.btnLogin.setOnClickListener{
             validateForm()
-            val intent = Intent(this, MedicationSetupActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this, MedicationSetupActivity::class.java)
+//            startActivity(intent)
 //            finish()
         }
 
@@ -75,6 +76,10 @@ class LoginActivity : AppCompatActivity() {
             binding.pbLogin.visibility = View.VISIBLE
             userViewModel.loginUser(loginRequest)
 
+//            var loginUser = LoginRequest(email,password)
+//            userViewModel.loginUser(loginUser)
+//            binding.pbLogin.visibility = View.VISIBLE
+//intended change for the progress bar
         }
     }
 

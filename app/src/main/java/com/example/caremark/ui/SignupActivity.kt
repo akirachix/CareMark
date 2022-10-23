@@ -35,8 +35,8 @@ class SignupActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         userViewModel.registerResponseLiveData.observe(this, Observer { registerResponse->
-            Toast.makeText(baseContext,registerResponse.message,Toast.LENGTH_LONG).show()
-            startActivity(Intent(baseContext,LoginActivity::class.java))
+//            Toast.makeText(baseContext,registerResponse?.message,Toast.LENGTH_LONG).show()
+//            startActivity(Intent(baseContext,LoginActivity::class.java))
             Toast.makeText(baseContext,registerResponse?.message,Toast.LENGTH_LONG).show()
             startActivity(Intent(this@SignupActivity,LoginActivity::class.java))
         })
@@ -98,7 +98,7 @@ class SignupActivity : AppCompatActivity() {
         }
 
     }
-
+//remove start intent, confirm password and check whether it is only registerUser not register,  and check intent passing in login and signup
 //        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
 //            binding.tilEmail.error = "Not a valid email address"
 //            error = true
