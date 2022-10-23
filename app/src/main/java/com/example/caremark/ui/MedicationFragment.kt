@@ -36,17 +36,13 @@ class MedicationFragment: Fragment (){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         medsViewModel.MedicationsLiveData.observe(viewLifecycleOwner, Observer { meds->
-            displayMeds(meds)
+//            displayMeds(meds)
 
         })
 
     }
 
-    fun displayMeds(medications: List<Medication>){
-        var medsAdapter=MedicationAdapter(medications)
-        binding.rvMeds.layoutManager= LinearLayoutManager(context)
-        binding.rvMeds.adapter=medsAdapter
-    }
+
 }
 
 

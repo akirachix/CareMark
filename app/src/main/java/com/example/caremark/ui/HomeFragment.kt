@@ -147,13 +147,9 @@ class HomeFragment : Fragment() {
 
 }
     fun displayMeds(medications: List<Medication>){
-
-//        var medsAdapter=HomeMedicationAdapter(medications)
-//        binding.rvMeds.layoutManager= LinearLayoutManager(context)
-//        binding.rvMeds.x=medsAdapter
-
-//        Still needs some work
-
+        var medsAdapter=MedicationAdapter(medications)
+        binding.rvMeds.layoutManager= LinearLayoutManager(context)
+        binding.rvMeds.adapter=medsAdapter
     }
 }
 
