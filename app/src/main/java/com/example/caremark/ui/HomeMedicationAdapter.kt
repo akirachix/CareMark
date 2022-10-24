@@ -22,7 +22,7 @@ class HomeMedicationAdapter( var medsList:List<Medication>):
         val currentItem = medsList[position]
         holder.medicationName.text=currentItem.medicationName
         holder.doses.text= currentItem.doses.toString()
-        holder.time.text=currentItem.time
+        holder.time.text=currentItem.time.toString()
     }
 
 

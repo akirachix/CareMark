@@ -7,20 +7,20 @@ import com.example.caremark.models.BlisterImage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class ImageRepository {
+class BlisterImagesRepository {
     val database= CareMarkDb.getDatabase(CareMark.appContext)
 
     suspend fun saveBlisterImage(blisterImage: BlisterImage){
         withContext(Dispatchers.IO){
-            database.ImageDAO().insertImage(blisterImage)
+            database.BlisterImagesDAO().insertBlisterImage(blisterImage)
         }
     }
-    fun getImageById(blisterImageId:Int): LiveData<BlisterImage> {
-        return database.ImageDAO().getImageById(blisterImageId)
+    fun getBlisterImageByDate(blisterImageDate:Long): LiveData<BlisterImage> {
+        return database.BlisterImagesDAO().getBlisterImageByDate(blisterImageDate)
     }
 
-    fun getAllImages():LiveData<List<BlisterImage>>{
-        return database.ImageDAO().getAllImages()
+    fun getAllBlisterImages():LiveData<List<BlisterImage>>{
+        return database.BlisterImagesDAO().getAllBlisterImages()
     }
 }
 
