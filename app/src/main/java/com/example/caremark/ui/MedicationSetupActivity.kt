@@ -3,22 +3,26 @@ package com.example.caremark.ui
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.example.caremark.ui.HomeFragment
+import androidx.appcompat.app.AppCompatActivity
 import com.example.caremark.ViewModel.MedicationViewModel
 import com.example.caremark.databinding.ActivityMedicationSetupBinding
-import com.example.caremark.databinding.FragmentHomeBinding
 import com.example.caremark.models.Medication
-
-
-
 import java.util.*
 
 class MedicationSetupActivity : AppCompatActivity(){
     var hourOfDay=0
     var minute=0
+    var error = false
+    var medicationName=binding.editTextTextPersonName.text.toString()
+    var doses=binding.etDoses.text.toString()
+    var time=binding.etTime.text.toString()
+    var noOfTimes=binding.etNoOfTimes.text.toString()
+    var startDate = binding.etStartDate.text.toString()
+    var endDate = binding.etEndDate.text.toString()
+    var appointmentDate = binding.etAppointment.text.toString()
+
     lateinit var binding:ActivityMedicationSetupBinding
     val medicationViewModel:MedicationViewModel by viewModels()
 
@@ -43,6 +47,7 @@ class MedicationSetupActivity : AppCompatActivity(){
                 binding.etStartDate.setText("" + dayOfMonth + " " + month + ", " + year)
             }, year, month, day)
             startDate.show()
+
         }
 
         binding.imgEndDate.setOnClickListener{
@@ -82,15 +87,11 @@ class MedicationSetupActivity : AppCompatActivity(){
         }
 
     }
+    fun convertToInt(string:String): Int {
+        var saved = doses.toInt()
+        return saved
+    }
     fun validateAddcontact(){
-        var error = false
-        var medicationName=binding.editTextTextPersonName.text.toString()
-        var doses=binding.etDoses.text.toString()
-        var time=binding.etTime.text.toString()
-        var noOfTimes=binding.etNoOfTimes.text.toString()
-        var startDate = binding.etStartDate.text.toString()
-        var endDate = binding.etEndDate.text.toString()
-        var appointmentDate = binding.etAppointment.text.toString()
 
         if (medicationName.isBlank()){
             binding.editTextTextPersonName.error="Enter medication name"
@@ -120,15 +121,26 @@ class MedicationSetupActivity : AppCompatActivity(){
             binding.etAppointment.error="Enter the appointment date"
             error=true
         }
-
         if(!error){
                 startActivity(Intent(this, HomeActivity::class.java))
-
+            var medication= Medication(
+                medicationId = 1, medicationName = medicationName,
+                doses =convertToInt(doses),
+                time =convertToInt(time),
+                noOfTimes =convertToInt(noOfTimes),
+                startDate =convertToLong(startDate),
+                endDate =convertToLong(endDate),
+                appointmentDate =convertToLong(appointmentDate))
+            medicationViewModel.saveMedication(medication)
         }
 
-        val medication= Medication(medicationId = 1, medicationName = medicationName,doses=0,time=time,noOfTimes=1,startDate=startDate,endDate=endDate,appointmentDate=appointmentDate)
-        medicationViewModel.saveMedication(medication)
     }
+    fun convertToLong(date:String): Long {
+        var savedDate = date.toLong()
+        return savedDate
+    }
+
+
 }
 
 

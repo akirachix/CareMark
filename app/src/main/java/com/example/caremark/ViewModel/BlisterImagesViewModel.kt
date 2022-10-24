@@ -3,20 +3,26 @@ package com.example.caremark.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.caremark.Repository.BlisterImagesRepository
+import com.example.caremark.models.BlisterImage
 import kotlinx.coroutines.launch
+import java.util.Date
 
 class BlisterImagesViewModel: ViewModel(){
-    val ImageRepository= ImageRepository()
-    lateinit var ImageLiveData: LiveData<Image>
-    lateinit var ImagesLiveData: LiveData<List<Image>>
+    val BlisterImagesRepository= BlisterImagesRepository()
+    lateinit var BlisterImageLiveData: LiveData<BlisterImage>
+    lateinit var BlisterImagesLiveData: LiveData<List<BlisterImage>>
 
-    fun saveImage(image: Image){
+    fun saveBlisterImage(blisterImage: BlisterImage){
         viewModelScope.launch{
-            ImageRepository.saveImage(image)
+            BlisterImagesRepository.saveBlisterImage(blisterImage)
         }
     }
-    fun getAllImages(){
-        ImagesLiveData=ImageRepository.getAllImages()
+    fun getAllBlisterImages(){
+        BlisterImagesLiveData=BlisterImagesRepository.getAllBlisterImages()
+    }
+    fun fetchBlisterImagebyDate(blisterImageDate: Long){
+        BlisterImageLiveData = BlisterImagesRepository.getBlisterImageByDate(blisterImageDate)
     }
 
 }
