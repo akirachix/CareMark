@@ -15,7 +15,7 @@ class BlisterImagesRepository {
             database.BlisterImagesDAO().insertBlisterImage(blisterImage)
         }
     }
-    fun getBlisterImageByDate(blisterImageDate:Long): LiveData<BlisterImage> {
+    fun getBlisterImageByDate(blisterImageDate:String): LiveData<BlisterImage> {
         return database.BlisterImagesDAO().getBlisterImageByDate(blisterImageDate)
     }
 

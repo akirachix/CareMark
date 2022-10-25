@@ -21,7 +21,7 @@ class BlisterImagesViewModel: ViewModel(){
     fun getAllBlisterImages(){
         BlisterImagesLiveData=BlisterImagesRepository.getAllBlisterImages()
     }
-    fun fetchBlisterImagebyDate(blisterImageDate: Long){
+    fun fetchBlisterImagebyDate(blisterImageDate: String){
         BlisterImageLiveData = BlisterImagesRepository.getBlisterImageByDate(blisterImageDate)
     }
 

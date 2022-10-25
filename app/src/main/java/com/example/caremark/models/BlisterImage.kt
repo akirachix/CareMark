@@ -12,5 +12,5 @@ data class BlisterImage(
 
     var blisterImageUri: String,
     @ColumnInfo(name = "blisterImageDate", defaultValue = "(strftime('%s','now','localtime'))")
-    val blisterImageDate: Long? = null,
+    val blisterImageDate: String,
 )

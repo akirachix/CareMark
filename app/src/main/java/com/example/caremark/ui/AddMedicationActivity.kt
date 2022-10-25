@@ -3,33 +3,29 @@ package com.example.caremark.ui
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import com.example.caremark.ViewModel.MedicationViewModel
+import com.example.caremark.databinding.ActivityAddMedicationBinding
 import com.example.caremark.databinding.ActivityMedicationSetupBinding
 import com.example.caremark.models.Medication
 import java.util.*
 
-class MedicationSetupActivity : AppCompatActivity(){
-    var hourOfDay=0
-    var minute=0
-    var error = false
-    var medicationName=binding.editTextTextPersonName.text.toString()
-    var doses=binding.etDoses.text.toString()
-    var time=binding.etTime.text.toString()
-    var noOfTimes=binding.etNoOfTimes.text.toString()
-    var startDate = binding.etStartDate.text.toString()
-    var endDate = binding.etEndDate.text.toString()
-    var appointmentDate = binding.etAppointment.text.toString()
+class AddMedicationActivity : AppCompatActivity() {
 
-    lateinit var binding:ActivityMedicationSetupBinding
-    val medicationViewModel:MedicationViewModel by viewModels()
+    lateinit var binding:ActivityAddMedicationBinding
+    val medsViewModel: MedicationViewModel by viewModels()
+
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityMedicationSetupBinding.inflate(layoutInflater)
+        binding= ActivityAddMedicationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         getDate()
         getTime()
 
@@ -68,11 +64,11 @@ class MedicationSetupActivity : AppCompatActivity(){
 
     fun getTime(){
         binding.imgTime.setOnClickListener {
-            val curr=Calendar.getInstance()
+            val curr= Calendar.getInstance()
             val hour=curr.get(Calendar.HOUR_OF_DAY)
             val minutes=curr.get(Calendar.MINUTE)
 
-            TimePickerDialog(this,TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+            TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
                 binding.etTime.setText("$hourOfDay:$minute")
             }, hour,minutes,false).show()
         }
@@ -88,10 +84,22 @@ class MedicationSetupActivity : AppCompatActivity(){
 
     }
     fun convertToInt(string:String): Int {
+        var doses=binding.etDoses.text.toString()
         var saved = doses.toInt()
         return saved
     }
     fun validateAddcontact(){
+
+        var hourOfDay=0
+        var minute=0
+        var error = false
+        var medicationName=binding.editTextTextPersonName.text.toString()
+        var doses=binding.etDoses.text.toString()
+        var time=binding.etTime.text.toString()
+        var noOfTimes=binding.etNoOfTimes.text.toString()
+        var startDate = binding.etStartDate.text.toString()
+        var endDate = binding.etEndDate.text.toString()
+        var appointmentDate = binding.etAppointment.text.toString()
 
         if (medicationName.isBlank()){
             binding.editTextTextPersonName.error="Enter medication name"
@@ -122,33 +130,18 @@ class MedicationSetupActivity : AppCompatActivity(){
             error=true
         }
         if(!error){
-                startActivity(Intent(this, HomeActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
             var medication= Medication(
-                medicationId = 1, medicationName = medicationName,
+                medicationId = 0, medicationName = medicationName,
                 doses =convertToInt(doses),
                 time =convertToInt(time),
                 noOfTimes =convertToInt(noOfTimes),
                 startDate =startDate,
                 endDate =endDate,
-                appointmentDate = appointmentDate)
-            medicationViewModel.saveMedication(medication)
+                appointmentDate =appointmentDate)
+            medsViewModel.saveMedication(medication)
         }
 
     }
 
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
