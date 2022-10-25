@@ -53,17 +53,6 @@
         tools:listitem="@layout/list_meds_item" />
 
     <ImageView
-        android:id="@+id/fabAddContact"
-        android:layout_width="39dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="676dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_add_circle_24" />
-
-    <ImageView
         android:id="@+id/imageView4"
         android:layout_width="544dp"
         android:layout_height="168dp"
@@ -283,6 +272,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnVerify"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddMedicine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.816"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView5"
+        app:srcCompat="@drawable/ic_baseline_add_circle_24" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

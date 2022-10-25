@@ -31,9 +31,9 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btnLogin.setOnClickListener{
             validateForm()
-//            val intent = Intent(this, MedicationSetupActivity::class.java)
-//            startActivity(intent)
-//            finish()
+            val intent = Intent(this, MedicationSetupActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         binding.tvSignup.setOnClickListener {

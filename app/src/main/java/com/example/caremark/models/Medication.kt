@@ -11,8 +11,8 @@ data class Medication(
     var doses: Int,
     var time: Int,
     var noOfTimes: Int,
-    var startDate: Long,
-    var endDate:Long,
-    var appointmentDate:Long
+    var startDate: String,
+    var endDate:String,
+    var appointmentDate:String
 )
 

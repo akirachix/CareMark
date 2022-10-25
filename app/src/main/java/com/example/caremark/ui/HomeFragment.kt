@@ -10,7 +10,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +17,9 @@ import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat.checkSelfPermission
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.caremark.R
 import com.example.caremark.ViewModel.BlisterImagesViewModel
@@ -33,10 +34,12 @@ class HomeFragment : Fragment() {
     val CAMERA_PERMISSION_CODE = 1000
     val IMAGE_CAPTURE_CODE = 1001
     var imageUri: Uri? = null
+
     var imageView: ImageView? = null
     lateinit var binding: FragmentHomeBinding
     val medsViewModel: MedicationViewModel by activityViewModels()
     val BlisterImagesViewModel: BlisterImagesViewModel by activityViewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -106,25 +109,25 @@ class HomeFragment : Fragment() {
         startActivityForResult(intent, IMAGE_CAPTURE_CODE)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         // Callback from camera intent
         if (resultCode == Activity.RESULT_OK) {
             // Set image captured to image view
-           var imageUr = imageView?.setImageURI(imageUri).toString()
+           //ar imageUr = imageView?.setImageURI(imageUri).toString()
 
-            if(imageUr.isNotEmpty()){
-                val dateTime = LocalDateTime.now()
-                BlisterImagesViewModel.saveBlisterImage(
-                        BlisterImage(
-                            blisterImageId = 1,
-                            blisterImageUri = imageUr,
-                            blisterImageDate = dateTime.toString().toLong()
-                        )
-                    )
-            }
+
+            val dateTime = LocalDateTime.now()
+            BlisterImagesViewModel.saveBlisterImage(
+                BlisterImage(
+                    blisterImageId = 0,
+                    blisterImageUri = imageUri.toString(),
+                    blisterImageDate = dateTime.toString()
+                )
+            )
+
         } else {
             // Failed to take picture
             showAlert("Failed to take camera picture")
@@ -142,6 +145,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        medsViewModel.MedicationsLiveData.observe(viewLifecycleOwner, Observer{ meds->
+            displayMeds(meds)
 
         imageView = binding.imgPicture
 
@@ -154,6 +159,12 @@ class HomeFragment : Fragment() {
             }
         }
 
+            binding.fabAddMedicine.setOnClickListener {
+                val intent = Intent(this@HomeFragment.requireContext(),AddMedicationActivity::class.java)
+                startActivity(intent)
+            }
+
+        })
     }
 
     fun displayMeds(medications: List<Medication>) {
@@ -161,6 +172,7 @@ class HomeFragment : Fragment() {
         binding.rvMeds.layoutManager = LinearLayoutManager(context)
         binding.rvMeds.adapter = medsAdapter
     }
+
 }
 
 

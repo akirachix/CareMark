@@ -5,10 +5,10 @@
         android:title="@string/home"
         android:icon="@drawable/home"/>
 
-    <item
-        android:id="@+id/med"
-        android:title="@string/medication"
-        android:icon="@drawable/med"/>
+<!--    <item-->
+<!--        android:id="@+id/med"-->
+<!--        android:title="@string/medication"-->
+<!--        android:icon="@drawable/med"/>-->
 
     <item
         android:id="@+id/track"

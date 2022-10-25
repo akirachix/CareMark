@@ -15,5 +15,5 @@ interface BlisterImagesDAO {
     @Query("SELECT * FROM BlisterImages")
     fun getAllBlisterImages(): LiveData<List<BlisterImage>>
     @Query("SELECT * FROM BlisterImages WHERE blisterImageDate = :blisterImageDate")
-    fun getBlisterImageByDate(blisterImageDate: Long): LiveData<BlisterImage>
+    fun getBlisterImageByDate(blisterImageDate: String): LiveData<BlisterImage>
 }
