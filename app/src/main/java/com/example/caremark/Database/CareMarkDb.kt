@@ -8,7 +8,7 @@ import com.example.caremark.models.BlisterImage
 import com.example.caremark.models.Medication
 
 
-@Database(entities = arrayOf(Medication::class, BlisterImage::class), version = 8)
+@Database(entities = arrayOf(Medication::class, BlisterImage::class), version = 11)
 abstract class CareMarkDb : RoomDatabase() {
     abstract fun MedicationDAO(): MedicationDAO
     abstract fun BlisterImagesDAO():BlisterImagesDAO
