@@ -25,4 +25,5 @@
     <string name="take_picture" />
     <string name="take_picture_description" />
     <string name="ok_button_title" />
+    <string name="congratylations">Congratylations!</string>
 </resources>
