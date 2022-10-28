@@ -4,8 +4,10 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.example.caremark.R
 import com.example.caremark.ViewModel.MedicationViewModel
 import com.example.caremark.databinding.ActivityMedicationSetupBinding
 import com.example.caremark.models.Medication
@@ -14,25 +16,32 @@ import java.util.*
 class MedicationSetupActivity : AppCompatActivity(){
     var hourOfDay=0
     var minute=0
-    var error = false
-    var medicationName=binding.editTextTextPersonName.text.toString()
-    var doses=binding.etDoses.text.toString()
-    var time=binding.etTime.text.toString()
-    var noOfTimes=binding.etNoOfTimes.text.toString()
-    var startDate = binding.etStartDate.text.toString()
-    var endDate = binding.etEndDate.text.toString()
-    var appointmentDate = binding.etAppointment.text.toString()
 
-    lateinit var binding:ActivityMedicationSetupBinding
-    val medicationViewModel:MedicationViewModel by viewModels()
+    lateinit var binding: ActivityMedicationSetupBinding
+    val medicationViewModel: MedicationViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityMedicationSetupBinding.inflate(layoutInflater)
+        binding=ActivityMedicationSetupBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        getDate()
-        getTime()
 
+        getMedication()
+        getNoOfTimes()
+        getTime()
+        getDate()
+    }
+
+
+    fun getMedication(){
+        val items = listOf("Rifampin (RIF)", "Isoniazid (INH)", "Pyrazinamide (PZA)", "Ethambutol (EMB)")
+        val adapter = ArrayAdapter(this, R.layout.list_items, items)
+        binding.etName.setAdapter(adapter)
+    }
+
+    fun getNoOfTimes(){
+        val times = listOf(1,2,3)
+        val timesAdapter = ArrayAdapter(this, R.layout.list_items, times)
+        binding.etTime.setAdapter(timesAdapter)
     }
 
     fun getDate(){
@@ -42,42 +51,53 @@ class MedicationSetupActivity : AppCompatActivity(){
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
 
-        binding.imgStartDate.setOnClickListener{
+        binding.etStartDate.setOnClickListener{
             val startDate = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-                binding.etStartDate.setText("" + dayOfMonth + " " + month + ", " + year)
+                binding.etStartDate.setText("" + dayOfMonth + "- " + month + "-" + year)
             }, year, month, day)
+            startDate.datePicker.setMinDate(System.currentTimeMillis() - 1000);
             startDate.show()
-
         }
 
-        binding.imgEndDate.setOnClickListener{
+        binding.etEndDate.setOnClickListener{
             val endDate = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-                binding.etEndDate.setText("" + dayOfMonth + " " + month + ", " + year)
+                binding.etEndDate.setText("" + dayOfMonth + "- " + month + "- " + year)
             }, year, month, day)
+            endDate.datePicker.setMinDate(System.currentTimeMillis() - 1000);
             endDate.show()
         }
 
-        binding.imgAppointment.setOnClickListener{
-            val appointmentDate = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-                binding.etAppointment.setText("" + dayOfMonth + " " + month + ", " + year)
+        binding.etAppointment.setOnClickListener{
+            val checkUpDate = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                binding.etAppointment.setText("" + dayOfMonth + " -" + month + "- " + year)
             }, year, month, day)
-            appointmentDate.show()
+            checkUpDate.datePicker.setMinDate(System.currentTimeMillis() - 1000);
+            checkUpDate.show()
         }
 
     }
 
     fun getTime(){
-        binding.imgTime.setOnClickListener {
+        binding.etReminder.setOnClickListener {
             val curr=Calendar.getInstance()
             val hour=curr.get(Calendar.HOUR_OF_DAY)
             val minutes=curr.get(Calendar.MINUTE)
 
             TimePickerDialog(this,TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
-                binding.etTime.setText("$hourOfDay:$minute")
+                var amPm = ""
+                var h = 0
+                if(hourOfDay > 12){
+                    h = hourOfDay-1
+                    amPm = "PM"
+                }else{
+                    h = hourOfDay
+                    amPm = "AM"
+                }
+                binding.etReminder.setText("$h:$minute $amPm")
             }, hour,minutes,false).show()
         }
-
     }
+
     override fun onResume() {
         super.onResume()
         binding.btnSaveMedicationDetails.setOnClickListener {
@@ -87,26 +107,33 @@ class MedicationSetupActivity : AppCompatActivity(){
         }
 
     }
+
     fun convertToInt(string:String): Int {
-        var saved = doses.toInt()
+        var time=binding.etTime.toString()
+        var saved = time.toInt()
         return saved
     }
     fun validateAddcontact(){
 
+        var error = false
+        var medicationName=binding.etName.text.toString()
+        var time=binding.etReminder.text.toString()
+        var noOfTimes=binding.etTime.text.toString()
+        var startDate = binding.etStartDate.text.toString()
+        var endDate = binding.etEndDate.text.toString()
+        var checkUpdate = binding.etAppointment.text.toString()
+
         if (medicationName.isBlank()){
-            binding.editTextTextPersonName.error="Enter medication name"
+            binding.etName.error="Enter medication name"
             error=true
         }
-        if (doses.isBlank()){
-            binding.etDoses.error="Enter doses"
-            error=true
-        }
+
         if (time.isBlank()){
-            binding.etTime.error="Medication time required"
+            binding.etReminder.error="Medication time required"
             error=true
         }
         if (noOfTimes.isBlank()){
-            binding.etNoOfTimes.error="Enter the number of taking pills in a day"
+            binding.etTime.error="Enter the number of taking pills in a day"
             error=true
         }
         if (startDate.isBlank()){
@@ -117,26 +144,27 @@ class MedicationSetupActivity : AppCompatActivity(){
             binding.etEndDate.error="Enter the reminder end day"
             error=true
         }
-        if (appointmentDate.isBlank()){
+        if (checkUpdate.isBlank()){
             binding.etAppointment.error="Enter the appointment date"
             error=true
         }
+
+
+
+
         if(!error){
-                startActivity(Intent(this, HomeActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
             var medication= Medication(
-                medicationId = 1, medicationName = medicationName,
-                doses =convertToInt(doses),
-                time =convertToInt(time),
+                medicationId = 0, medicationName = medicationName,
+                time =time,
                 noOfTimes =convertToInt(noOfTimes),
                 startDate =startDate,
                 endDate =endDate,
-                appointmentDate = appointmentDate)
+                appointmentDate =checkUpdate)
             medicationViewModel.saveMedication(medication)
         }
 
     }
-
-
 
 }
 

@@ -20,7 +20,7 @@ class MedicationAdapter( var medsList:List<Medication>):
     override fun onBindViewHolder(holder: MedicationViewHolder, position: Int) {
         val currentItem = medsList[position]
         holder.medicationName.text=currentItem.medicationName
-        holder.doses.text= currentItem.doses.toString()
+
         holder.time.text=currentItem.time.toString()
     }
 
@@ -30,7 +30,7 @@ class MedicationAdapter( var medsList:List<Medication>):
 
     class MedicationViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
         val medicationName:TextView=itemView.findViewById(R.id.tvName)
-        val doses:TextView=itemView.findViewById(R.id.tvDose)
+
         val time:TextView=itemView.findViewById(R.id.tvHour)
     }
 

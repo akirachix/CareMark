@@ -25,5 +25,9 @@
     <string name="take_picture" />
     <string name="take_picture_description" />
     <string name="ok_button_title" />
-    <string name="congratylations">Congratylations!</string>
+    
+    <string name="end_dd_mm_yyyy">end_dd_mm_yyyy</string>
+    <string name="start_dd_mm_yyyy">start_dd_mm_yyyy</string>
+    <string name="checkup_dd_mm_yyyy">checkup_dd_mm_yyyy</string>
+
 </resources>

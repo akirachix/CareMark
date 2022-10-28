@@ -8,8 +8,7 @@ import androidx.room.PrimaryKey
 data class Medication(
     @PrimaryKey(autoGenerate = true) @NonNull var medicationId: Int,
     var medicationName: String,
-    var doses: Int,
-    var time: Int,
+    var time: String,
     var noOfTimes: Int,
     var startDate: String,
     var endDate:String,
