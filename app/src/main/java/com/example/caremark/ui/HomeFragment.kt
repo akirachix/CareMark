@@ -128,6 +128,8 @@ class HomeFragment : Fragment() {
                     blisterImageDate = dateTime.toString()
                 )
             )
+            val intent = Intent(this@HomeFragment.requireContext(),CongratulationsActivity::class.java)
+            startActivity(intent)
 
         } else {
             // Failed to take picture
@@ -140,9 +142,17 @@ class HomeFragment : Fragment() {
         builder.setMessage(message)
         builder.setPositiveButton(R.string.ok_button_title, null)
 
+//        binding.rvMeds.setOnClickListener{
+//            val intent = Intent(this@HomeFragment.requireContext(),CongratulationsActivity::class.java)
+//            startActivity(intent)
+//        }
+
         val dialog = builder.create()
         dialog.show()
+
+
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -150,6 +160,7 @@ class HomeFragment : Fragment() {
             displayMeds(meds)
 
         imageView = binding.imgPicture
+
 
         binding.btnVerify.setOnClickListener {
             // Request permission
