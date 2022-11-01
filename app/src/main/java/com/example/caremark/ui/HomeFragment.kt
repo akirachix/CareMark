@@ -170,6 +170,10 @@ class HomeFragment : Fragment() {
                 openCameraInterface()
             }
         }
+            binding.imgprofile.setOnClickListener {
+                val intent = Intent(this@HomeFragment.requireContext(),ProfileActivity::class.java)
+                startActivity(intent)
+            }
 
             binding.fabAddMedicine.setOnClickListener {
                 val intent = Intent(this@HomeFragment.requireContext(),AddMedicationActivity::class.java)
