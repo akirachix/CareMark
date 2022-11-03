@@ -29,5 +29,6 @@
     <string name="end_dd_mm_yyyy">end_dd_mm_yyyy</string>
     <string name="start_dd_mm_yyyy">start_dd_mm_yyyy</string>
     <string name="checkup_dd_mm_yyyy">checkup_dd_mm_yyyy</string>
+    <string name="track_medication">Track Medication</string>
 
 </resources>

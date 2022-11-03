@@ -7,10 +7,10 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface ApiInterface {
-    @POST("/register")
+    @POST("/api/register/")
     suspend fun registerUser(@Body registerRequest: RegisterRequest): Response<RegisterResponse>
 
-    @POST("/login")
+    @POST("/api/login/")
     suspend fun login(@Body loginRequest: LoginRequest):Response<LoginResponse>
 
 //    @POST("/profile")

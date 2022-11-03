@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="etDays" type="id" />
+    <item name="imgMon" type="id" />
+    <item name="imgTue" type="id" />
+    <item name="imgWed" type="id" />
+    <item name="imgThur" type="id" />
+    <item name="imgFri" type="id" />
+    <item name="imgSat" type="id" />
+    <item name="imgSun" type="id" />
+</resources>
