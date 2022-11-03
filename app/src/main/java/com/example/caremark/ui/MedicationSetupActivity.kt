@@ -108,12 +108,9 @@ class MedicationSetupActivity : AppCompatActivity(){
 
     }
 
-//    fun convertToInt(string:String): Int {
-//        var time=binding.etTime.toString()
-//        var saved = time.toInt()
-//        return saved
-//    }
+
     fun validateAddcontact(){
+
 
         var error = false
         var medicationName=binding.etName.text.toString()

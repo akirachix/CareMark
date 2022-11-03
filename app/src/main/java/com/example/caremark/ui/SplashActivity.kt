@@ -21,10 +21,10 @@ class SplashActivity : AppCompatActivity() {
         val handler=Handler(Looper.getMainLooper())
         handler.postDelayed({
             if (accessToken!!.isNotBlank()) {
-                startActivity(Intent(this, HomeActivity::class.java))
+                startActivity(Intent(this, OnboardingActivity::class.java))
             }
             else {
-                startActivity(Intent(this, OnboardingActivity::class.java))
+
             }
             finish()
         },3000)
