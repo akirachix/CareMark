@@ -46,9 +46,11 @@ class SignupActivity : AppCompatActivity() {
     }
 
     fun validateSignupForm() {
-        binding.tilPassword.error = null
         binding.tilFirstName.error = null
         binding.tilLastName.error = null
+        binding.tilEmail.error=null
+        binding.tilphonenumber.error=null
+        binding.tilPassword.error = null
         var error = false
 
 
@@ -72,6 +74,12 @@ class SignupActivity : AppCompatActivity() {
             error = true
         }
 
+        var phoneNumber = binding.etphonenumber.text.toString()
+        if (phoneNumber.isBlank()) {
+            binding.tilphonenumber.error = "Phone number is a required field"
+            error = true
+        }
+
         var password = binding.etPassword.text.toString()
         if (password.isBlank()) {
             binding.tilPassword.error = "Password is required"
@@ -92,7 +100,7 @@ class SignupActivity : AppCompatActivity() {
 
 
         if (!error) {
-            val registerRequest = RegisterRequest(firstName,lastName,email,password,confirmPassword)
+            val registerRequest = RegisterRequest(firstName,lastName,email,phoneNumber,password)
             userViewModel.registerUser(registerRequest)
             startActivity(Intent(this,LoginActivity::class.java))
         }

@@ -112,11 +112,11 @@ class AddMedicationActivity : AppCompatActivity() {
 
     }
 
-    fun convertToInt(string:String): Int {
-        var time=string
-        var saved = time.toInt()
-        return saved
-    }
+//    fun convertToInt(string:String): Int {
+//        var times=string
+//        var saved = times.toInt()
+//        return saved
+//    }
     fun validateAddcontact(){
         var error = false
         var medicationName=binding.etName.text.toString()
@@ -160,7 +160,7 @@ class AddMedicationActivity : AppCompatActivity() {
             var medication= Medication(
                 medicationId = 0, medicationName = medicationName,
                 time =time,
-                noOfTimes =convertToInt(noOfTimes),
+                noOfTimes =noOfTimes.toInt(),
                 startDate =startDate,
                 endDate =endDate,
                 appointmentDate =checkUpdate)

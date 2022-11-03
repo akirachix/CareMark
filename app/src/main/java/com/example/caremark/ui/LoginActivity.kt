@@ -31,9 +31,8 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btnLogin.setOnClickListener{
             validateForm()
-            val intent = Intent(this, MedicationSetupActivity::class.java)
-            startActivity(intent)
-            finish()
+//            finish()
+
         }
 
         binding.tvforgotpassword.setOnClickListener {
@@ -64,14 +63,19 @@ class LoginActivity : AppCompatActivity() {
 
 
     private fun validateForm() {
-        val email = binding.etEmail.text.toString()
-        val password = binding.etPassword.text.toString()
+
+        binding.tilPassword.error = null
+        binding.tilEmail.error = null
         var error = false
 
+
+        val email = binding.etEmail.text.toString()
         if (email.isBlank()) {
             binding.tilEmail.error = "Email is required"
             error = true
         }
+
+        val password = binding.etPassword.text.toString()
         if (password.isBlank()) {
             binding.tilPassword.error = "Password is required"
             error = true
@@ -80,11 +84,8 @@ class LoginActivity : AppCompatActivity() {
             val loginRequest = LoginRequest(email, password)
             binding.pbLogin.visibility = View.VISIBLE
             userViewModel.loginUser(loginRequest)
-
-//            var loginUser = LoginRequest(email,password)
-//            userViewModel.loginUser(loginUser)
-//            binding.pbLogin.visibility = View.VISIBLE
-//intended change for the progress bar
+            val intent = Intent(this, MedicationSetupActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -94,11 +95,13 @@ class LoginActivity : AppCompatActivity() {
         editor.putString(Constants.accessToken, loginResponse.accessToken)
         editor.putString(Constants.userId, loginResponse.userId)
         editor.putString(Constants.profileId, loginResponse.profileId)
-        editor.putString("ACCESS_TOKEN", loginResponse.accessToken)
-        editor.putString("USER_ID", loginResponse.accessToken)
-        editor.putString("USER_ID", loginResponse.userId)
-        editor.putString("PROFILE_ID", loginResponse.profileId)
+//        editor.putString("ACCESS_TOKEN", loginResponse.accessToken)
+//        editor.putString("USER_ID", loginResponse.accessToken)
+//        editor.putString("USER_ID", loginResponse.userId)
+//        editor.putString("PROFILE_ID", loginResponse.profileId)
         editor.apply()
+
+
     }
 
 

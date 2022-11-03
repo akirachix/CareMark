@@ -2,15 +2,20 @@ package com.example.caremark.ui
 
 import android.graphics.Color
 import android.graphics.Typeface
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CalendarView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.example.caremark.R
+import com.example.caremark.ViewModel.BlisterImagesViewModel
 import com.example.caremark.databinding.FragmentTrackBinding
+import com.example.caremark.models.BlisterImage
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
@@ -18,6 +23,9 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.MPPointF
+import com.github.sundeepk.compactcalendarview.domain.Event
+import java.text.SimpleDateFormat
+import java.util.*
 
 class TrackFragment: Fragment (){
     private lateinit var binding :FragmentTrackBinding
@@ -25,16 +33,33 @@ class TrackFragment: Fragment (){
     // variables for our pie chart
     lateinit var pieChart: PieChart
     lateinit var dateTV: TextView
-    lateinit var calendarView: CalendarView
+//    lateinit var calendarView: CalendarView
+    val blisterImagesViewModel: BlisterImagesViewModel by activityViewModels()
+
+    @RequiresApi(Build.VERSION_CODES.N_MR1)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         binding=FragmentTrackBinding.inflate(inflater,container,false)
+
         return binding.root
     }
 
+
+    private fun trackVerifications(blisterImages: List<BlisterImage>){
+        var dates=blisterImages.forEach { image ->
+            val formatter= SimpleDateFormat("yyyy-MM-dd",Locale.ENGLISH)
+            val date = formatter.parse(image.blisterImageDate)!!
+
+            val cal = Calendar.getInstance()
+            cal.time = date
+            val millis = cal.timeInMillis
+            val trackColor = Event(Color.GREEN,  millis)
+            binding.calendarView.addEvent(trackColor)
+        Log.d("BlisterImage","${image.blisterImageDate}")}
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -42,23 +67,31 @@ class TrackFragment: Fragment (){
         // variable with their ids.
         pieChart = binding.pieChart
         dateTV = binding.idTVDate
-        calendarView = binding.calendarView
+        var calendarView=binding.calendarView
+//        calendarView = binding.calendarView
+
+        var x= blisterImagesViewModel.getAllBlisterImages()
+        trackVerifications(x.value?: listOf(BlisterImage(1,"","2022-11-02")))
 
         // on below line we are adding set on
         // date change listener for calendar view.
-        calendarView
-            .setOnDateChangeListener(
-                CalendarView.OnDateChangeListener { view, year, month, dayOfMonth ->
-                    // In this Listener we are getting values
-                    // such as year, month and day of month
-                    // on below line we are creating a variable
-                    // in which we are adding all the variables in it.
-                    val Date = (dayOfMonth.toString() + "-"
-                            + (month + 1) + "-" + year)
+//        calendarView
+//            .setOnDateChangeListener(
+//                CalendarView.OnDateChangeListener { view, year, month, dayOfMonth ->
+//                    // In this Listener we are getting values
+//                    // such as year, month and day of month
+//                    // on below line we are creating a variable
+//                    // in which we are adding all the variables in it.
+//                    val Date = (dayOfMonth.toString() + "-"
+//                            + (month + 1) + "-" + year)
+//
+//                    // set this date in TextView for Display
+//                    dateTV.setText(Date)
+//
+//                })
 
-                    // set this date in TextView for Display
-                    dateTV.setText(Date)
-                })
+
+
 
         // on below line we are setting user percent value,
         // setting description as enabled and offset for pie chart

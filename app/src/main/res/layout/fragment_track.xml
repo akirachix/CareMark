@@ -13,7 +13,7 @@
         android:layout_margin="8dp"
         android:gravity="center"
         android:padding="8dp"
-        android:text="Track Medication"
+        android:text="@string/track_medication"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -26,12 +26,27 @@
         android:layout_marginTop="30dp">
 
 
-        <CalendarView
+<!--        <CalendarView-->
+<!--            android:id="@+id/calendarView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="15dp" />-->
+        <com.github.sundeepk.compactcalendarview.CompactCalendarView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/calendarView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp" />
-
+            android:layout_width="fill_parent"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:layout_height="250dp"
+            app:compactCalendarTargetHeight="250dp"
+            app:compactCalendarTextSize="12sp"
+            app:compactCalendarBackgroundColor="#ffffff"
+            app:compactCalendarTextColor="#000000"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="#E57373"
+            app:compactCalendarCurrentDayBackgroundColor="#B71C1C"
+            app:compactCalendarMultiEventIndicatorColor="#fff"
+            android:layout_marginTop="30dp"
+            />
 
     </LinearLayout>
     <!--Ui component for our pie chart-->
@@ -90,4 +105,5 @@
             android:textAlignment="center"
             android:textColor="@color/black" />
     </LinearLayout>
+
 </RelativeLayout>
