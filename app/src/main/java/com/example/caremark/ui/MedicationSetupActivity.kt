@@ -55,7 +55,7 @@ class MedicationSetupActivity : AppCompatActivity(){
             val startDate = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 binding.etStartDate.setText("" + dayOfMonth + "- " + month + "-" + year)
             }, year, month, day)
-            startDate.datePicker.setMinDate(System.currentTimeMillis() -1000);
+            startDate.datePicker.setMinDate(System.currentTimeMillis() - 1000);
             startDate.show()
         }
 
@@ -63,7 +63,7 @@ class MedicationSetupActivity : AppCompatActivity(){
             val endDate = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 binding.etEndDate.setText("" + dayOfMonth + "- " + month + "- " + year)
             }, year, month, day)
-            endDate.datePicker.setMinDate(System.currentTimeMillis() -1000);
+            endDate.datePicker.setMinDate(System.currentTimeMillis() - 1000);
             endDate.show()
         }
 
@@ -71,7 +71,7 @@ class MedicationSetupActivity : AppCompatActivity(){
             val checkUpDate = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 binding.etAppointment.setText("" + dayOfMonth + " -" + month + "- " + year)
             }, year, month, day)
-            checkUpDate.datePicker.setMinDate(System.currentTimeMillis() -1000);
+            checkUpDate.datePicker.setMinDate(System.currentTimeMillis() - 1000);
             checkUpDate.show()
         }
 

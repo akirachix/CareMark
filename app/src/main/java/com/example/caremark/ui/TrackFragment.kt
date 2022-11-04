@@ -93,7 +93,7 @@ class TrackFragment: Fragment (){
 //        calendarView = binding.calendarView
 
         var x= blisterImagesViewModel.getAllBlisterImages()
-        trackVerifications(x.value?: listOf(BlisterImage(0,"","2022-11-02")))
+        trackVerifications(x.value?: listOf(BlisterImage(0,"","2022-11-03")))
 
         // get the reference of CalendarView
 

@@ -41,7 +41,7 @@
             android:layout_marginTop="20dp"
             android:text="Level 1"
             android:textColor="@color/green"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <ImageView
@@ -49,26 +49,6 @@
             android:layout_height="71dp"
             android:layout_marginTop="15dp"
             app:srcCompat="@drawable/pointsimg" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="110dp"
-            android:layout_marginTop="60dp"
-            android:text="Unlocked on oct 10"
-
-            android:textColor="@color/green"
-            android:textSize="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="110dp"
-            android:layout_marginTop="20dp"
-            android:text="Level 1"
-            android:textColor="@color/green"
-            android:textSize="30dp"
-            android:textStyle="bold" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -83,7 +63,7 @@
             android:layout_marginTop="60dp"
             android:text="Unlocked on oct 10"
             android:textColor="@color/green"
-            android:textSize="20dp" />
+            android:textSize="12dp" />
 
     </androidx.cardview.widget.CardView>
 
@@ -107,7 +87,7 @@
             android:layout_marginTop="20dp"
             android:text="Level 2"
             android:textColor="@color/lightgrey"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <ImageView
@@ -122,16 +102,16 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="110dp"
             android:layout_marginTop="60dp"
-            android:text="Unlocked on oct 10"
+            android:text="Badge still locked"
             android:textColor="@color/green"
-            android:textSize="20dp" />
+            android:textSize="12dp" />
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="31dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="290dp"
-            android:backgroundTint="@color/grey"
+            android:backgroundTint="@color/black"
             app:srcCompat="@drawable/lock" />
     </androidx.cardview.widget.CardView>
 
@@ -154,7 +134,7 @@
             android:layout_marginTop="20dp"
             android:text="Level 3"
             android:textColor="@color/lightgrey"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <ImageView
@@ -168,9 +148,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="110dp"
             android:layout_marginTop="60dp"
-            android:text="Unlocked on oct 10"
+            android:text="Badge still locked"
             android:textColor="@color/green"
-            android:textSize="20dp" />
+            android:textSize="12dp" />
 
         <ImageView
             android:layout_width="31dp"
@@ -183,10 +163,10 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="50dp"
         android:text="Total "
-        android:textColor="@color/green"
-        android:textSize="40dp"
+        android:textColor="@color/black"
+        android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.07"
