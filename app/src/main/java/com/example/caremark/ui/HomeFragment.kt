@@ -6,10 +6,12 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +19,7 @@ import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat.checkSelfPermission
+import androidx.core.view.iterator
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -27,7 +30,10 @@ import com.example.caremark.ViewModel.MedicationViewModel
 import com.example.caremark.databinding.FragmentHomeBinding
 import com.example.caremark.models.BlisterImage
 import com.example.caremark.models.Medication
+import com.github.sundeepk.compactcalendarview.domain.Event
+import java.text.SimpleDateFormat
 import java.time.LocalDateTime
+import java.util.*
 
 
 class HomeFragment : Fragment() {
@@ -38,7 +44,7 @@ class HomeFragment : Fragment() {
     var imageView: ImageView? = null
     lateinit var binding: FragmentHomeBinding
     val medsViewModel: MedicationViewModel by activityViewModels()
-    val BlisterImagesViewModel: BlisterImagesViewModel by activityViewModels()
+    val blisterImagesViewModel: BlisterImagesViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -121,7 +127,7 @@ class HomeFragment : Fragment() {
 
 
             val dateTime = LocalDateTime.now()
-            BlisterImagesViewModel.saveBlisterImage(
+            blisterImagesViewModel.saveBlisterImage(
                 BlisterImage(
                     blisterImageId = 0,
                     blisterImageUri = imageUri.toString(),
@@ -153,6 +159,24 @@ class HomeFragment : Fragment() {
 
     }
 
+    private fun trackVerifications(blisterImages: List<BlisterImage>){
+
+        blisterImages.forEach { image ->image.blisterImageDate
+            val formatter= SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
+            val date = formatter.parse(image.blisterImageDate)!!
+
+            val cal = Calendar.getInstance()
+            cal.time = date
+            cal.timeInMillis
+//            val list= listOf(millis)
+            val allDates=binding.calendarView2
+//            allDates= listOf(millis)
+            for (date in allDates){
+                date.setBackgroundColor(Color.WHITE)
+
+                Log.d("BlisterImage","${date}")}}
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -160,9 +184,12 @@ class HomeFragment : Fragment() {
             displayMeds(meds)
 
         imageView = binding.imgPicture
+            var x= blisterImagesViewModel.getAllBlisterImages()
+            trackVerifications(x.value?: listOf(BlisterImage(0,"","2022-11-02")))
 
 
-        binding.btnVerify.setOnClickListener {
+
+            binding.btnVerify.setOnClickListener {
             // Request permission
             val permissionGranted = requestCameraPermission()
             if (permissionGranted) {

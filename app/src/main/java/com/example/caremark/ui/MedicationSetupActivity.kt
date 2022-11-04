@@ -55,7 +55,7 @@ class MedicationSetupActivity : AppCompatActivity(){
             val startDate = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 binding.etStartDate.setText("" + dayOfMonth + "- " + month + "-" + year)
             }, year, month, day)
-            startDate.datePicker.setMinDate(System.currentTimeMillis() - 1000);
+            startDate.datePicker.setMinDate(System.currentTimeMillis() -1000);
             startDate.show()
         }
 
@@ -63,7 +63,7 @@ class MedicationSetupActivity : AppCompatActivity(){
             val endDate = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 binding.etEndDate.setText("" + dayOfMonth + "- " + month + "- " + year)
             }, year, month, day)
-            endDate.datePicker.setMinDate(System.currentTimeMillis() - 1000);
+            endDate.datePicker.setMinDate(System.currentTimeMillis() -1000);
             endDate.show()
         }
 
@@ -71,7 +71,7 @@ class MedicationSetupActivity : AppCompatActivity(){
             val checkUpDate = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 binding.etAppointment.setText("" + dayOfMonth + " -" + month + "- " + year)
             }, year, month, day)
-            checkUpDate.datePicker.setMinDate(System.currentTimeMillis() - 1000);
+            checkUpDate.datePicker.setMinDate(System.currentTimeMillis() -1000);
             checkUpDate.show()
         }
 
@@ -87,7 +87,7 @@ class MedicationSetupActivity : AppCompatActivity(){
                 var amPm = ""
                 var h = 0
                 if(hourOfDay > 12){
-                    h = hourOfDay-1
+                    h = hourOfDay
                     amPm = "PM"
                 }else{
                     h = hourOfDay
@@ -110,8 +110,6 @@ class MedicationSetupActivity : AppCompatActivity(){
 
 
     fun validateAddcontact(){
-
-
         var error = false
         var medicationName=binding.etName.text.toString()
         var time=binding.etReminder.text.toString()

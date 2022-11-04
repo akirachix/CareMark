@@ -1,109 +1,130 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:orientation="vertical"
     tools:context=".ui.HomeActivity">
+
+
+    <!--    <androidx.cardview.widget.CardView-->
+    <!--        android:id="@+id/cardView5"-->
+    <!--        android:layout_width="335dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:cardBackgroundColor="#D3F3F7"-->
+    <!--        app:cardCornerRadius="8dp"-->
+    <!--        app:cardElevation="9dp"-->
+    <!--        tools:layout_editor_absoluteY="100dp">-->
+
+    <!--    </androidx.cardview.widget.CardView>-->
+
+
+    <!--        <CalendarView-->
+    <!--            android:id="@+id/calendarView"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="15dp" />-->
+
+
+    <com.github.sundeepk.compactcalendarview.CompactCalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="fill_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="32dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:compactCalendarBackgroundColor="#ffffff"
+        app:compactCalendarCurrentDayBackgroundColor="@color/green"
+        app:compactCalendarCurrentSelectedDayBackgroundColor="@color/grey"
+        app:compactCalendarMultiEventIndicatorColor="#fff"
+        app:compactCalendarTargetHeight="350dp"
+        app:compactCalendarTextColor="#000000"
+        app:compactCalendarTextSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idTVDate" />
+
+
+    <TextView
+        android:id="@+id/tvTaken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="24dp"
+        android:drawableLeft="@drawable/ic_baseline_circle_24"
+        android:drawableTint="#56EB5D"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="Taken Medicine"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/tvMissed"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <TextView
+        android:id="@+id/tvMissed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="48dp"
+        android:drawableLeft="@drawable/ic_baseline_circle_24"
+        android:drawableTint="@color/red"
+        android:gravity="center"
+        android:padding="4dp"
+
+        android:text="Missed Medicine"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTaken"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvTaken"
+        app:layout_constraintTop_toTopOf="@+id/tvTaken"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/idTVDate"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="32dp"
         android:gravity="center"
         android:padding="8dp"
         android:text="@string/track_medication"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="30dp">
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="252dp"
+        android:layout_height="218dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        app:srcCompat="@drawable/onboardtwo" />
 
 
-<!--        <CalendarView-->
-<!--            android:id="@+id/calendarView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="15dp" />-->
-        <com.github.sundeepk.compactcalendarview.CompactCalendarView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/calendarView"
-            android:layout_width="fill_parent"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp"
-            android:layout_height="250dp"
-            app:compactCalendarTargetHeight="250dp"
-            app:compactCalendarTextSize="12sp"
-            app:compactCalendarBackgroundColor="#ffffff"
-            app:compactCalendarTextColor="#000000"
-            app:compactCalendarCurrentSelectedDayBackgroundColor="#E57373"
-            app:compactCalendarCurrentDayBackgroundColor="#B71C1C"
-            app:compactCalendarMultiEventIndicatorColor="#fff"
-            android:layout_marginTop="30dp"
-            />
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_below="@id/layoutOne"-->
+    <!--        android:layout_marginTop="25dp"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:weightSum="3">-->
 
-    </LinearLayout>
-    <!--Ui component for our pie chart-->
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/pieChart"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="380dp" />
+    <!--    </LinearLayout>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/pieChart"
-        android:layout_marginTop="25dp"
-        android:orientation="horizontal"
-        android:weightSum="3">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:drawableLeft="@drawable/ic_baseline_circle_24"
-            android:drawableTint="@color/purple_200"
-            android:gravity="center"
-            android:padding="4dp"
-            android:text="Days to Go"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:drawableLeft="@drawable/ic_baseline_circle_24"
-            android:drawableTint="@color/yellow"
-            android:gravity="center"
-            android:padding="4dp"
-            android:text="Taken"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:drawableLeft="@drawable/ic_baseline_circle_24"
-            android:drawableTint="@color/red"
-            android:gravity="center"
-            android:padding="4dp"
-            android:text="Missed"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
-    </LinearLayout>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
