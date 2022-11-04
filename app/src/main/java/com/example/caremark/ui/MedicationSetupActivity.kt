@@ -87,13 +87,13 @@ class MedicationSetupActivity : AppCompatActivity(){
                 var amPm = ""
                 var h = 0
                 if(hourOfDay > 12){
-                    h = hourOfDay-1
+                    h = hourOfDay
                     amPm = "PM"
                 }else{
                     h = hourOfDay
                     amPm = "AM"
                 }
-                binding.etReminder.setText("$h:$minute $amPm")
+                binding.etReminder.setText(String.format("%02d:%02d", h, minute)+ amPm)
             }, hour,minutes,false).show()
         }
     }
