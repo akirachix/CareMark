@@ -87,7 +87,7 @@ class MedicationSetupActivity : AppCompatActivity(){
                 var amPm = ""
                 var h = 0
                 if(hourOfDay > 12){
-                    h = hourOfDay-1
+                    h = hourOfDay
                     amPm = "PM"
                 }else{
                     h = hourOfDay
@@ -110,8 +110,6 @@ class MedicationSetupActivity : AppCompatActivity(){
 
 
     fun validateAddcontact(){
-
-
         var error = false
         var medicationName=binding.etName.text.toString()
         var time=binding.etReminder.text.toString()

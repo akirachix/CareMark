@@ -11,6 +11,7 @@ import com.example.caremark.R
 import com.example.caremark.ViewModel.MedicationViewModel
 import com.example.caremark.databinding.ActivityAddMedicationBinding
 import com.example.caremark.databinding.ActivityMedicationSetupBinding
+import com.example.caremark.models.BlisterImage
 import com.example.caremark.models.Medication
 import java.util.*
 
@@ -19,9 +20,6 @@ class AddMedicationActivity : AppCompatActivity() {
     var minute=0
     lateinit var binding:ActivityAddMedicationBinding
     val medsViewModel: MedicationViewModel by viewModels()
-
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,8 +31,8 @@ class AddMedicationActivity : AppCompatActivity() {
         getNoOfTimes()
         getTime()
         getDate()
-    }
 
+    }
 
     fun getMedication(){
         val items = listOf("Rifampin (RIF)", "Isoniazid (INH)", "Pyrazinamide (PZA)", "Ethambutol (EMB)")
@@ -91,7 +89,7 @@ class AddMedicationActivity : AppCompatActivity() {
                 var amPm = ""
                 var h = 0
                 if(hourOfDay > 12){
-                    h = hourOfDay-1
+                    h = hourOfDay
                     amPm = "PM"
                 }else{
                     h = hourOfDay
@@ -152,10 +150,7 @@ class AddMedicationActivity : AppCompatActivity() {
             error=true
         }
 
-
-
-
-        if(!error){
+    if(!error){
             startActivity(Intent(this, HomeActivity::class.java))
             var medication= Medication(
                 medicationId = 0, medicationName = medicationName,
