@@ -17,8 +17,8 @@ class UserViewModel:ViewModel() {
     val loginErrorLiveData = MutableLiveData<String?>()
     var registerResponseLiveData=MutableLiveData<RegisterResponse>()
     val registerErrorLiveData=MutableLiveData<String?>()
-//    var profileResponseLiveData=MutableLiveData<ProfileResponse>()
-//    val profileErrorLiveData=MutableLiveData<String?>()
+    var profileResponseLiveData=MutableLiveData<ProfileResponse>()
+    val profileErrorLiveData=MutableLiveData<String?>()
 
     fun loginUser(loginRequest: LoginRequest){
         viewModelScope.launch {
@@ -47,19 +47,19 @@ class UserViewModel:ViewModel() {
        }
     }
 
-//  fun profileUser(profileRequest: ProfileRequest){
-//     viewModelScope.launch{
-//          val response = userRepository.profileUser(profileRequest)
-//         if(response.isSuccessful){
-//             profileResponseLiveData.postValue(response.body())
-//           }
-//         else{
-//         val error = response.errorBody()?.string()
-//                profileErrorLiveData.postValue(error)
-//                profileErrorLiveData.postValue(response.errorBody()?.string())
-//
-//           }
-//      }
-//    }
+  fun profileUser(profileRequest: ProfileRequest){
+     viewModelScope.launch{
+          val response = userRepository.profileUser(profileRequest)
+         if(response.isSuccessful){
+             profileResponseLiveData.postValue(response.body())
+           }
+         else{
+         val error = response.errorBody()?.string()
+                profileErrorLiveData.postValue(error)
+                profileErrorLiveData.postValue(response.errorBody()?.string())
+
+           }
+      }
+    }
 
 }
