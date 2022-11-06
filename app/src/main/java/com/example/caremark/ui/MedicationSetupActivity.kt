@@ -1,11 +1,13 @@
 package com.example.caremark.ui
 
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
+import android.app.*
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.caremark.R
 import com.example.caremark.ViewModel.MedicationViewModel
@@ -74,6 +76,8 @@ class MedicationSetupActivity : AppCompatActivity(){
             checkUpDate.datePicker.setMinDate(System.currentTimeMillis() - 1000);
             checkUpDate.show()
         }
+
+
 
     }
 
@@ -144,9 +148,6 @@ class MedicationSetupActivity : AppCompatActivity(){
             error=true
         }
 
-
-
-
         if(!error){
             startActivity(Intent(this, HomeActivity::class.java))
             var medication= Medication(
@@ -160,6 +161,7 @@ class MedicationSetupActivity : AppCompatActivity(){
         }
 
     }
+
 
 }
 

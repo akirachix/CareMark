@@ -27,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         sharedPrefs=getSharedPreferences("CAREMARK_PREFS", MODE_PRIVATE)
+        val accessToken = sharedPrefs.getString("ACCESS_TOKEN","")
 
 
         binding.btnLogin.setOnClickListener{
@@ -49,14 +50,14 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        userViewModel.loginResponseLivedata.observe(this, Observer {loginResponse->
+        userViewModel.loginResponseLivedata.observe(this, Observer {loginResponse->Toast.makeText(baseContext, "Welcome to CareMark", Toast.LENGTH_LONG).show()
             saveLoginDetails(loginResponse!!)
-            Toast.makeText(baseContext, loginResponse?.message, Toast.LENGTH_LONG).show()
+
             startActivity(Intent(baseContext, MedicationSetupActivity::class.java))
             finish()
         })
         userViewModel.loginErrorLiveData.observe(this, Observer{ error->
-            Toast.makeText(baseContext, error,Toast.LENGTH_LONG).show()
+            Toast.makeText(baseContext, "Unable to Login",Toast.LENGTH_LONG).show()
         })
     }
 
@@ -92,7 +93,8 @@ class LoginActivity : AppCompatActivity() {
     fun saveLoginDetails(loginResponse: LoginResponse){
         val editor = sharedPrefs.edit()
         val token = "Bearer ${loginResponse.accessToken}"
-        editor.putString(Constants.accessToken, loginResponse.accessToken)
+        editor.putString(Constants.accessToken,token)
+//        editor.putString(Constants.accessToken, loginResponse.accessToken)
         editor.putString(Constants.userId, loginResponse.userId)
         editor.putString(Constants.profileId, loginResponse.profileId)
 //        editor.putString("ACCESS_TOKEN", loginResponse.accessToken)

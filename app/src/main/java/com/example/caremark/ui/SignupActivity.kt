@@ -35,13 +35,13 @@ class SignupActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         userViewModel.registerResponseLiveData.observe(this, Observer { registerResponse->
-            Toast.makeText(baseContext,registerResponse?.message,Toast.LENGTH_LONG).show()
+            Toast.makeText(baseContext,"Successfully Registered",Toast.LENGTH_LONG).show()
+
             startActivity(Intent(baseContext,LoginActivity::class.java))
-            Toast.makeText(baseContext,registerResponse?.message,Toast.LENGTH_LONG).show()
             startActivity(Intent(this@SignupActivity,LoginActivity::class.java))
         })
         userViewModel.registerErrorLiveData.observe(this, Observer { error->
-            Toast.makeText(baseContext,error,Toast.LENGTH_LONG).show()
+            Toast.makeText(baseContext,"Unable to Register",Toast.LENGTH_LONG).show()
         })
     }
 

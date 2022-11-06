@@ -13,6 +13,6 @@ interface ApiInterface {
     @POST("/api/login/")
     suspend fun login(@Body loginRequest: LoginRequest):Response<LoginResponse>
 
-//    @POST("/profile")
-//    suspend fun profile(@Body profileRequest: ProfileRequest):Response<ProfileResponse>
+    @POST("api/profile")
+    suspend fun profile(@Body profileRequest: ProfileRequest):Response<ProfileResponse>
 }
