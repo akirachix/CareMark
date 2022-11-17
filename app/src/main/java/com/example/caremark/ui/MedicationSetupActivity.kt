@@ -31,6 +31,7 @@ class MedicationSetupActivity : AppCompatActivity(){
         getNoOfTimes()
         getTime()
         getDate()
+        SaveMedication()
     }
 
 
@@ -101,19 +102,16 @@ class MedicationSetupActivity : AppCompatActivity(){
             }, hour,minutes,false).show()
         }
     }
-
-    override fun onResume() {
-        super.onResume()
+    fun SaveMedication(){
         binding.btnSaveMedicationDetails.setOnClickListener {
-            validateAddcontact()
-//            val intent = Intent(this, HomeActivity::class.java)
-//            startActivity(intent)
+            validateAddMedication()
+           val intent= Intent(this,ReminderActivity::class.java)
+            startActivity(intent)
         }
-
     }
 
 
-    fun validateAddcontact(){
+    fun validateAddMedication(){
         var error = false
         var medicationName=binding.etName.text.toString()
         var time=binding.etReminder.text.toString()
@@ -149,7 +147,6 @@ class MedicationSetupActivity : AppCompatActivity(){
         }
 
         if(!error){
-            startActivity(Intent(this, HomeActivity::class.java))
             var medication= Medication(
                 medicationId = 0, medicationName = medicationName,
                 time =time,

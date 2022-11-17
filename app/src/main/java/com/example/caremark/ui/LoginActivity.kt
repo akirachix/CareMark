@@ -28,10 +28,10 @@ class LoginActivity : AppCompatActivity() {
 
         sharedPrefs=getSharedPreferences("CAREMARK_PREFS", MODE_PRIVATE)
         val accessToken = sharedPrefs.getString("ACCESS_TOKEN","")
-
-
         binding.btnLogin.setOnClickListener{
             validateForm()
+            startActivity(Intent(baseContext, MedicationSetupActivity::class.java))
+//            finish()
 //            finish()
 
         }
@@ -53,8 +53,6 @@ class LoginActivity : AppCompatActivity() {
         userViewModel.loginResponseLivedata.observe(this, Observer {loginResponse->Toast.makeText(baseContext, "Welcome to CareMark", Toast.LENGTH_LONG).show()
             saveLoginDetails(loginResponse!!)
 
-            startActivity(Intent(baseContext, MedicationSetupActivity::class.java))
-            finish()
         })
         userViewModel.loginErrorLiveData.observe(this, Observer{ error->
             Toast.makeText(baseContext, "Unable to Login",Toast.LENGTH_LONG).show()
