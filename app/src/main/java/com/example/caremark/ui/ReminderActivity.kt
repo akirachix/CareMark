@@ -33,8 +33,8 @@ class ReminderActivity : AppCompatActivity() {
     private fun scheduleNotification()
     {
         val intent = Intent(applicationContext, Notification::class.java)
-        val title = binding.titleET.text.toString()
-        val message = binding.messageET.text.toString()
+        val title="CareMark"
+        val message="Hello, It's time to take medicine"
         intent.putExtra(titleExtra, title)
         intent.putExtra(messageExtra, message)
 
@@ -60,6 +60,8 @@ class ReminderActivity : AppCompatActivity() {
         val date = Date(time)
         val dateFormat = android.text.format.DateFormat.getLongDateFormat(applicationContext)
         val timeFormat = android.text.format.DateFormat.getTimeFormat(applicationContext)
+//        val title="CareMark Friends"
+//        val message="Hello friend, It's time to take medicine"
 
         AlertDialog.Builder(this)
             .setTitle("Notification Scheduled")

@@ -27,7 +27,9 @@ class Notification : BroadcastReceiver() {
             .setContentTitle(intent.getStringExtra(titleExtra))
             .setContentText(intent.getStringExtra(messageExtra))
             .setContentIntent(activityPendingIntent )
+
             .build()
+
 
         val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         manager.notify(notificationID, notification)

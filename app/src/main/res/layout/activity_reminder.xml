@@ -15,39 +15,41 @@
 
         android:layout_marginStart="20dp"
         android:layout_marginTop="72dp"
-        android:text="PERSONALISE NOTIFICATION DETAILS"
+        android:text="ADD TIME FOR A DAILY REMINDER"
+        android:textColor="@color/button_color"
         android:textSize="20sp"
-        android:textStyle="normal"
-        android:textColor="@color/button_color"/>
+        android:textStyle="normal" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:layout_marginTop="20dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:paddingHorizontal="20dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/titleET"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="title" />
-    </com.google.android.material.textfield.TextInputLayout>
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/titleET"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Preferred name"-->
+<!--            android:text="CareMark Friends" />-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:layout_marginTop="20dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:paddingHorizontal="20dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/messageET"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="message" />
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/messageET"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="message"-->
+<!--            tools:text="Hello friend, it's time to take Medicine" />-->
 
-    </com.google.android.material.textfield.TextInputLayout>
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -78,14 +80,15 @@
             android:scaleX="0.7"
             android:layout_marginLeft="-30dp"
             android:layout_marginRight="-30dp"/>
+
     </LinearLayout>
 
     <Button
         android:id="@+id/submitButton"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:text="schedule_notification"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text=" SET A REMINDER" />
 
 </LinearLayout>

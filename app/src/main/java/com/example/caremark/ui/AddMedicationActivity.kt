@@ -29,8 +29,8 @@ class AddMedicationActivity : AppCompatActivity() {
 
         getMedication()
         getNoOfTimes()
-        getTime()
         getDate()
+        getPeriod()
 
     }
 
@@ -45,7 +45,11 @@ class AddMedicationActivity : AppCompatActivity() {
         val timesAdapter = ArrayAdapter(this, R.layout.list_items, times)
         binding.etTime.setAdapter(timesAdapter)
     }
-
+    fun getPeriod(){
+        val periods = listOf("Morning", "Evening")
+        val periodAdapter = ArrayAdapter(this, R.layout.list_items, periods)
+        binding.etReminder.setAdapter(periodAdapter)
+    }
     fun getDate(){
         val c = Calendar.getInstance()
 
@@ -79,26 +83,7 @@ class AddMedicationActivity : AppCompatActivity() {
 
     }
 
-    fun getTime(){
-        binding.etReminder.setOnClickListener {
-            val curr=Calendar.getInstance()
-            val hour=curr.get(Calendar.HOUR_OF_DAY)
-            val minutes=curr.get(Calendar.MINUTE)
 
-            TimePickerDialog(this,TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
-                var amPm = ""
-                var h = 0
-                if(hourOfDay > 12){
-                    h = hourOfDay
-                    amPm = "PM"
-                }else{
-                    h = hourOfDay
-                    amPm = "AM"
-                }
-                binding.etReminder.setText("$h:$minute $amPm")
-            }, hour,minutes,false).show()
-        }
-    }
 
     override fun onResume() {
         super.onResume()
