@@ -29,8 +29,10 @@ class MedicationSetupActivity : AppCompatActivity(){
 
         getMedication()
         getNoOfTimes()
-        getTime()
+//        getTime()
         getDate()
+        SaveMedication()
+        getPeriod()
     }
 
 
@@ -44,6 +46,12 @@ class MedicationSetupActivity : AppCompatActivity(){
         val times = listOf(1,2,3)
         val timesAdapter = ArrayAdapter(this, R.layout.list_items, times)
         binding.etTime.setAdapter(timesAdapter)
+    }
+
+    fun getPeriod(){
+        val periods = listOf("Morning", "Evening")
+        val periodAdapter = ArrayAdapter(this, R.layout.list_items, periods)
+        binding.etReminder.setAdapter(periodAdapter)
     }
 
     fun getDate(){
@@ -81,39 +89,36 @@ class MedicationSetupActivity : AppCompatActivity(){
 
     }
 
-    fun getTime(){
-        binding.etReminder.setOnClickListener {
-            val curr=Calendar.getInstance()
-            val hour=curr.get(Calendar.HOUR_OF_DAY)
-            val minutes=curr.get(Calendar.MINUTE)
+//    fun getTime(){
+//        binding.etReminder.setOnClickListener {
+//            val curr=Calendar.getInstance()
+//            val hour=curr.get(Calendar.HOUR_OF_DAY)
+//            val minutes=curr.get(Calendar.MINUTE)
 
-            TimePickerDialog(this,TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
-                var amPm = ""
-                var h = 0
-                if(hourOfDay > 12){
-                    h = hourOfDay
-                    amPm = "PM"
-                }else{
-                    h = hourOfDay
-                    amPm = "AM"
-                }
-                binding.etReminder.setText("$h:$minute $amPm")
-            }, hour,minutes,false).show()
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
+//            TimePickerDialog(this,TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+//                var amPm = ""
+//                var h = 0
+//                if(hourOfDay > 12){
+//                    h = hourOfDay
+//                    amPm = "PM"
+//                }else{ 
+//                    h = hourOfDay
+//                    amPm = "AM"
+//                }
+//                binding.etReminder.setText("$h:$minute $amPm")
+//            }, hour,minutes,false).show()
+//        }
+//    }
+    fun SaveMedication(){
         binding.btnSaveMedicationDetails.setOnClickListener {
-            validateAddcontact()
-//            val intent = Intent(this, HomeActivity::class.java)
-//            startActivity(intent)
+            validateAddMedication()
+           val intent= Intent(this,ReminderActivity::class.java)
+            startActivity(intent)
         }
-
     }
 
 
-    fun validateAddcontact(){
+    fun validateAddMedication(){
         var error = false
         var medicationName=binding.etName.text.toString()
         var time=binding.etReminder.text.toString()
@@ -149,7 +154,6 @@ class MedicationSetupActivity : AppCompatActivity(){
         }
 
         if(!error){
-            startActivity(Intent(this, HomeActivity::class.java))
             var medication= Medication(
                 medicationId = 0, medicationName = medicationName,
                 time =time,

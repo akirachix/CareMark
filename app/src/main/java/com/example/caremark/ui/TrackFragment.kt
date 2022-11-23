@@ -76,8 +76,7 @@ class TrackFragment: Fragment (){
             cal.time = date
             val millis = cal.timeInMillis
             val allDates= listOf(millis)
-            for (millis in allDates){
-            val trackColor = Event(Color.GREEN,  millis)
+            for (millis in allDates){ val trackColor = Event(Color.GREEN,  millis)
                 binding.calendarView.addEvent(trackColor)
 
         Log.d("BlisterImage","${millis}")}}
@@ -93,7 +92,7 @@ class TrackFragment: Fragment (){
 //        calendarView = binding.calendarView
 
         var x= blisterImagesViewModel.getAllBlisterImages()
-        trackVerifications(x.value?: listOf(BlisterImage(0,"","2022-11-03")))
+        trackVerifications(x.value?: listOf(BlisterImage(0,"","2022-11-24")))
 
         // get the reference of CalendarView
 

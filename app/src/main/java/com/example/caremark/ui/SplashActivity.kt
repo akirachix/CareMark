@@ -12,7 +12,7 @@ import com.example.caremark.databinding.ActivitySplashBinding
 import com.example.caremark.utils.Constants.Companion.accessToken
 
 class SplashActivity : AppCompatActivity() {
-    lateinit var binding: ActivitySplashBinding
+//    lateinit var binding: ActivitySplashBinding
     lateinit var sharedPrefs: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +22,7 @@ class SplashActivity : AppCompatActivity() {
         handler.postDelayed({
             if (accessToken!!.isNotBlank()) {
                 startActivity(Intent(this, HomeActivity::class.java))
+                finish()
             }
             else {
                 startActivity(Intent(this, OnboardingActivity::class.java))
@@ -30,11 +31,6 @@ class SplashActivity : AppCompatActivity() {
         },3000)
 
     }
-
-
-
-
-
 }
 
 
